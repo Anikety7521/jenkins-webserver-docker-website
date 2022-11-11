@@ -1,21 +1,15 @@
 - hosts: all
   tasks:
-   - name: installing web server
+   - name: installing docker
      package:
        name: "docker"
        state: present
 
-   - name: startig the web server
+   - name: startig docker services
      service:
              name: "docker"
              state: started
              enabled: yes
-             
-    
-   - name: Stop a container
-     docker_container:
-       name: webapp
-       state: stopped
              
    - name: ensure a container is running
      docker_container:
