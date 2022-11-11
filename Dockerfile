@@ -1,4 +1,4 @@
-FROM httpd
+FROM httpd:2.4
  
 COPY /root/var/lib/jenkins/workspace/project/index.html /usr/local/apache2/htdocs/
 
