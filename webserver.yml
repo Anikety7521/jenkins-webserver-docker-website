@@ -10,12 +10,5 @@
              name: "docker"
              state: started
              enabled: yes
-   - name: "Install Apache websever"
-      package:
-         name: docker pull aniket86/webserver:jenkins-project-21
-         state: present
-         
-   - name: "Start Apache Web Service"
-      command: /usr/sbin/httpd
-      changed_when: false
+   
 
