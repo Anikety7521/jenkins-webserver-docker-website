@@ -1,11 +1,11 @@
 - hosts: all
   tasks:
    - name: ensure a container is running
-      docker_container:
-        name: webapp
-        state: started
-        image: "aniket86/webserver:${BUILD_TAG}"
-        pull: true
-        ports:
-          - "5000:5000"
+     docker_container:
+       name: webapp
+       state: started
+       image: "aniket86/webserver:${BUILD_TAG}"
+       pull: true
+       ports:
+         - "5000:5000"
 
