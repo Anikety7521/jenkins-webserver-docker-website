@@ -1,3 +1,3 @@
 FROM httpd
  
-COPY target/ /usr/local/apache2/htdocs/
+COPY /home/ec2-user/jenkins/workspace/project/ /usr/local/apache2/htdocs/
