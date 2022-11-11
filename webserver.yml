@@ -15,7 +15,7 @@
      docker_container:
        name: webapp
        state: started
-       image: "aniket86/webserver:jenkins-project-28"
+       image: "aniket86/webserver"
        pull: true
        ports:
          - "5000:80"
