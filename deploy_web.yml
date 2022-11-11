@@ -1,11 +1,11 @@
 - hosts: all
   tasks:
-   - name: Install Apache websever
-      package:
-         name: "docker pull aniket86/webserver:${BUILD_TAG}"
-         state: present
-         
-   - name: Start Apache Web Service
-      command: /usr/sbin/httpd
-      changed_when: false
+   - name: ensure a container is running
+      docker_container:
+        name: webapp
+        state: started
+        image: "aniket86/webserver:${BUILD_TAG}"
+        pull: true
+        ports:
+          - "5000:5000"
 
