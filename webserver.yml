@@ -1,5 +1,10 @@
 - hosts: all
   tasks:
+   - name: setting up requirments for docker 
+     command: "pip3 install docker"
+     command: "pip3 install docker-py>=1.7.0"
+     command: "pip3 install docker-compose>=1.7.0"
+     
    - name: installing docker
      package:
        name: "docker"
