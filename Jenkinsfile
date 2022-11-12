@@ -49,7 +49,6 @@ pipeline {
          }
          failure {
              echo "OMG ! The build failed"
-             mail bcc: '', body: 'hi check this ..', cc: '', from: '', replyTo: '', subject: 'job ete fail', to: 'vdaga@lwindia.com'
          }
      }
 }
