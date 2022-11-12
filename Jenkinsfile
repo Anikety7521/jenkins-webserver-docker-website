@@ -1,8 +1,6 @@
 pipeline {
     
-    agent {
-        label "node 1"
-    }
+    agent any
     
     stages {
         stage("SCM") {
@@ -11,15 +9,10 @@ pipeline {
             }
         }
         
-        stage("conf system using ansible") {
-            steps {
-                sh 'ansible-playbook webserver.yml'
-            }
-        }
-        
+
         stage("creating docker image") {
             steps {
-                sh 'sudo docker build -t  aniket86/webserver:${BUILD_TAG}  . '
+                sh 'sudo docker build -t  aniket86/webserver:${BUILD_TAG}  /var/lib/jenkins/workspace/project/ '
             }
         }
         
@@ -33,12 +26,30 @@ pipeline {
             }
         }
         
-        stage("Deploying webserver using ansible") {
+        stage("conf system using ansible") {
             steps {
-                sh 'ansible-playbook deploy_web.yml'
+                sh 'sudo ansible-playbook webserver.yml'
             }
         }
+        
+        
       
         
     }
+    
+    post {
+         always {
+             echo "You can always see me"
+         }
+         success {
+              echo "I am running because the job ran successfully"
+         }
+         unstable {
+              echo "Gear up ! The build is unstable. Try fix it"
+         }
+         failure {
+             echo "OMG ! The build failed"
+             mail bcc: '', body: 'hi check this ..', cc: '', from: '', replyTo: '', subject: 'job ete fail', to: 'vdaga@lwindia.com'
+         }
+     }
 }
